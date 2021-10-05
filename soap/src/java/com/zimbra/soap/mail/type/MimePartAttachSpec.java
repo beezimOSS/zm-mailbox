@@ -23,10 +23,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.zimbra.common.gql.GqlConstants;
 import com.zimbra.common.soap.MailConstants;
+
+import io.leangen.graphql.annotations.GraphQLInputField;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.annotations.types.GraphQLType;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name=MailConstants.E_MIMEPART)
+@GraphQLType(name=GqlConstants.CLASS_MIMEPART_ATTACHMENT, description="MimePart Attachment specifications")
 public class MimePartAttachSpec extends AttachSpec {
 
     /**
@@ -34,6 +40,7 @@ public class MimePartAttachSpec extends AttachSpec {
      * @zm-api-field-description Message ID
      */
     @XmlAttribute(name=MailConstants.A_MESSAGE_ID, required=true)
+    @GraphQLQuery(name=GqlConstants.MESSAGE_ID, description="Message ID")
     private final String messageId;
 
     /**
@@ -41,6 +48,7 @@ public class MimePartAttachSpec extends AttachSpec {
      * @zm-api-field-description Part
      */
     @XmlAttribute(name=MailConstants.A_PART, required=true)
+    @GraphQLQuery(name=GqlConstants.PART, description="part")
     private final String part;
 
     /**
@@ -51,7 +59,9 @@ public class MimePartAttachSpec extends AttachSpec {
         this((String) null, (String) null);
     }
 
-    public MimePartAttachSpec(String messageId, String part) {
+    public MimePartAttachSpec(
+            @GraphQLInputField(name=GqlConstants.MESSAGE_ID, description="Message ID") String messageId, 
+            @GraphQLInputField(name=GqlConstants.PART, description="part") String part) {
         this.messageId = messageId;
         this.part = part;
     }

@@ -23,10 +23,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.zimbra.common.gql.GqlConstants;
 import com.zimbra.common.soap.MailConstants;
+
+import io.leangen.graphql.annotations.GraphQLInputField;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.annotations.types.GraphQLType;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name=MailConstants.E_MSG)
+@GraphQLType(name=GqlConstants.CLASS_MESSAGE_ATTACHMENT, description="Message Attachment specifications")
 public class MsgAttachSpec extends AttachSpec {
 
     /**
@@ -34,6 +40,7 @@ public class MsgAttachSpec extends AttachSpec {
      * @zm-api-field-description ID
      */
     @XmlAttribute(name=MailConstants.A_ID, required=true)
+    @GraphQLQuery(name=GqlConstants.ID, description="Attachment ID")
     private final String id;
 
     /**
@@ -44,7 +51,8 @@ public class MsgAttachSpec extends AttachSpec {
         this((String) null);
     }
 
-    public MsgAttachSpec(String id) {
+    public MsgAttachSpec(@GraphQLInputField(
+            name=GqlConstants.ID, description="Attachment ID") String id) {
         this.id = id;
     }
 

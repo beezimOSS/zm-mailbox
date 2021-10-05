@@ -120,6 +120,19 @@ public class GqlConstants {
     public static final String CLASS_ATTACHMENT_SPECIFICATIONS = "AttachSpec";
     public static final String OPTIONAL = "optional";
 
+    // contact attachment constants
+    public static final String CLASS_CONTACT_ATTACHMENT = "ContactAttachSpec";
+
+    // doc attachment constants
+    public static final String CLASS_DOC_ATTACHMENT = "DocAttachSpec";
+    public static final String PATH = "path";
+
+    // MimePart attachment constants
+    public static final String CLASS_MIMEPART_ATTACHMENT = "MimePartAttachSpec";
+
+    // Message attachment constants
+    public static final String CLASS_MESSAGE_ATTACHMENT = "MsgAttachSpec";
+    
     // email address info constants
     public static final String CLASS_EMAIL_ADDRESS_INFO = "EmailAddrInfo";
     public static final String ADDRESS = "address";

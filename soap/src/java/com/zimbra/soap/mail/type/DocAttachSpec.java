@@ -23,12 +23,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.zimbra.common.gql.GqlConstants;
 import com.zimbra.common.soap.MailConstants;
+
+import io.leangen.graphql.annotations.GraphQLInputField;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.annotations.types.GraphQLType;
 
 // See ParseMimeMessage.handleAttachments
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name=MailConstants.E_DOC)
+@GraphQLType(name=GqlConstants.CLASS_DOC_ATTACHMENT, description="Doc Attachment specifications")
 public class DocAttachSpec
 extends AttachSpec {
 
@@ -56,11 +62,17 @@ extends AttachSpec {
     public DocAttachSpec() {
     }
 
+    @GraphQLInputField(name=GqlConstants.PATH, description="Attachment details")
     public void setPath(String path) { this.path = path; }
+    @GraphQLInputField(name=GqlConstants.ID, description="Attachment ID")
     public void setId(String id) { this.id = id; }
+    @GraphQLInputField(name=GqlConstants.VERSION, description="Attachment Version")
     public void setVersion(Integer version) { this.version = version; }
+    @GraphQLQuery(name=GqlConstants.PATH, description="Attachment Path")
     public String getPath() { return path; }
+    @GraphQLQuery(name=GqlConstants.ID, description="Attachment ID")
     public String getId() { return id; }
+    @GraphQLQuery(name=GqlConstants.VERSION, description="Attachment Version")
     public Integer getVersion() { return version; }
 
     public MoreObjects.ToStringHelper addToStringInfo(MoreObjects.ToStringHelper helper) {
