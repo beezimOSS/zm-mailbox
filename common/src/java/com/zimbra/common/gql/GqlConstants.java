@@ -115,6 +115,8 @@ public class GqlConstants {
 
     // attachments info constants
     public static final String CLASS_ATTACHMENTS_INFO = "AttachmentsInfo";
+    public static final String MSGS = "msgs";
+    public static final String DOCS = "docs";
 
     // attachment specification constants
     public static final String CLASS_ATTACHMENT_SPECIFICATIONS = "AttachSpec";
